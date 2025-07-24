@@ -6,7 +6,7 @@
 }
 
 body {
-    cursor: url("cursorr.png"), auto;
+    cursor: url("public/cursorr.png"), auto;
     padding-top: 80px;
     font-family: 'Inter', sans-serif;
     color: #f5f5f5;
