@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+    (function() {
+        emailjs.init("12_80mSCB_QT3sxMN"); 
+    })();
+    </script>
 </head>
 
 <body>
@@ -143,12 +150,20 @@
     <section class="section contact" id="contact">
         <div class="container">
             <h2>Contact</h2>
-            <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required class="form-input">
-                <input type="email" name="email" placeholder="Your Email" required class="form-input">
-                <textarea name="message" rows="5" placeholder="Your Message" required class="form-textarea"></textarea>
+            <form id="contact-form" class="contact-form">
+                <input type="text" name="from_name" id="from_name" placeholder="Your Name" required class="form-input">
+                <input type="email" name="from_email" id="from_email" placeholder="Your Email" required class="form-input">
+                <textarea name="message" id="message" rows="5" placeholder="Your Message" required class="form-textarea"></textarea>
                 <button type="submit" class="btn">Send Message</button>
             </form>
+            <div id="form-success" style="display: none; color: #58a6ff; text-align: center; margin-top: 20px;">
+                Thank you! Your message has been sent successfully.
+            </div>
+            <div id="form-error" style="display: none; color: #ff6d00; text-align: center; margin-top: 20px;">
+                Failed to send message. Please try again later.
+            </div>
+            <!-- Add this inside your form -->
+            <!-- <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div> -->
         </div>
     </section>
 
@@ -161,5 +176,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src = "script.js"></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </body>
 </html>

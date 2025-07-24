@@ -214,3 +214,50 @@ document.addEventListener('mousemove', (e) => {
     const y = e.clientY / window.innerHeight;
     bg.style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
 });
+
+// Contact form submission with EmailJS
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    // Send the email
+    emailjs.sendForm('service_ztozg64', 'template_6z0gcbh', this)
+        .then(function(response) { 
+            console.log('SUCCESS!', response.status, response.text);
+            // Show success message
+            document.getElementById('form-success').style.display = 'block';
+            document.getElementById('form-error').style.display = 'none';
+            // Reset form
+            document.getElementById('contact-form').reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            // Show error message
+            document.getElementById('form-error').style.display = 'block';
+            document.getElementById('form-success').style.display = 'none';
+        })
+        .finally(function() {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+            
+            // Hide messages after 5 seconds
+            setTimeout(() => {
+                document.getElementById('form-success').style.display = 'none';
+                document.getElementById('form-error').style.display = 'none';
+            }, 5000);
+        });
+});
+
+// Form validation
+// document.getElementById('contact-form').addEventListener('input', function() {
+//     const name = document.getElementById('from_name').value;
+//     const email = document.getElementById('from_email').value;
+//     const message = document.getElementById('message').value;
+//     const submitBtn = this.querySelector('button[type="submit"]');
+    
+//     submitBtn.disabled = !(name && email && message);
+// });
