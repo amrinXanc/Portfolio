@@ -12,6 +12,12 @@ const text = "Crafting seamless digital experiences, from backend logic to front
         window.onload = type; 
 gsap.registerPlugin(ScrollTrigger);
 
+//project click
+document.querySelector(".calculator").addEventListener("click", () => {
+    window.open("https://morderncalculator.netlify.app", "_blank");
+});
+
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
